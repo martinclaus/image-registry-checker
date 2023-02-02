@@ -8,6 +8,8 @@ edition = "2021"
 [dependencies]
 dotenv = "0.15.0"
 serde = {version="1.0.152", features=["derive"]}
-temp-env = "0.3.1"
 tokio = {version="1.25.0", features=["process", "macros", "rt-multi-thread"]}
 warp = "0.3.3"
+
+[dev-dependencies]
+temp-env = "0.3.1"
