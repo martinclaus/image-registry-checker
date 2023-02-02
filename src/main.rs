@@ -1,37 +1,16 @@
-use actix_web::{get, web, App, HttpResponse, HttpServer, Responder};
 use dotenv::dotenv;
 use serde::Deserialize;
-use std::env;
-use std::process::Stdio;
+use std::{env, process::Stdio};
 use tokio::process::Command;
-
-#[get("/health")]
-async fn health() -> impl Responder {
-    "I'm up and running!"
-}
+use warp::{http::Response, Filter};
 
 #[derive(Deserialize)]
 struct ImageSlug {
     image: String,
 }
 
-#[get("/exists")]
-async fn check_image_exist(info: web::Query<ImageSlug>) -> impl Responder {
-    let args = info.into_inner();
-    match check_image_slug(args.image).await {
-        Ok(success) => {
-            if success {
-                HttpResponse::Ok()
-            } else {
-                HttpResponse::NotFound()
-            }
-        }
-        Err(_) => HttpResponse::InternalServerError(),
-    }
-}
-
 async fn check_image_slug(image: impl AsRef<str>) -> std::io::Result<bool> {
-    // spawn process with crane to look up image
+    // spawn crane to look up image
     let mut child = Command::new(get_crane_command())
         .arg("manifest")
         .arg(image.as_ref())
@@ -49,13 +28,34 @@ fn get_crane_command() -> String {
     }
 }
 
-#[actix_web::main]
-async fn main() -> std::io::Result<()> {
+#[tokio::main]
+async fn main() {
     dotenv().ok();
 
-    HttpServer::new(|| App::new().service(health).service(check_image_exist))
-        .bind(("127.0.0.1", 8080))?
-        .run()
+    let check_image = warp::get()
+        .and(warp::path("exists"))
+        .and(warp::query::<ImageSlug>())
+        .and_then(|p: ImageSlug| async move {
+            let response = match check_image_slug(p.image).await {
+                Ok(true) => Response::builder()
+                    .status(warp::http::StatusCode::OK)
+                    .body("ok"),
+                Ok(false) => Response::builder()
+                    .status(warp::http::StatusCode::NOT_FOUND)
+                    .body("Image does not exist"),
+                Err(_) => Response::builder()
+                    .status(warp::http::StatusCode::INTERNAL_SERVER_ERROR)
+                    .body(""),
+            };
+            response.map_err(|_| warp::reject::reject())
+        });
+
+    let health_check = warp::get()
+        .and(warp::path("health"))
+        .map(|| Response::builder().body("Ok"));
+
+    warp::serve(check_image.or(health_check))
+        .run(([127, 0, 0, 1], 8080))
         .await
 }
 
@@ -65,6 +65,7 @@ mod test {
 
     #[tokio::test]
     async fn check_image_slug_returns_true_on_success() {
+        env::set_var("CRANE", "crane");
         let res = check_image_slug("docker.io/alpine").await;
         assert!(res.is_ok());
         if let Ok(res) = res {
@@ -74,7 +75,9 @@ mod test {
 
     #[tokio::test]
     async fn check_image_slug_returns_false_on_invalid_slug() {
+        env::set_var("CRANE", "crane");
         let res = check_image_slug("docker.io/non-existent").await;
+        println!("{:?}", res);
         assert!(res.is_ok());
         if let Ok(res) = res {
             assert!(!res)
