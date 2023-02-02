@@ -1,5 +1,7 @@
 use actix_web::{get, web, App, HttpResponse, HttpServer, Responder};
+use dotenv::dotenv;
 use serde::Deserialize;
+use std::env;
 use std::process::Stdio;
 use tokio::process::Command;
 
@@ -30,7 +32,7 @@ async fn check_image_exist(info: web::Query<ImageSlug>) -> impl Responder {
 
 async fn check_image_slug(image: impl AsRef<str>) -> std::io::Result<bool> {
     // spawn process with crane to look up image
-    let mut child = Command::new("crane")
+    let mut child = Command::new(get_crane_command())
         .arg("manifest")
         .arg(image.as_ref())
         .stdout(Stdio::null())
@@ -40,8 +42,17 @@ async fn check_image_slug(image: impl AsRef<str>) -> std::io::Result<bool> {
     Ok(status.success())
 }
 
+fn get_crane_command() -> String {
+    match env::var("CRANE") {
+        Ok(val) => val,
+        Err(_) => "crane".to_owned(),
+    }
+}
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    dotenv().ok();
+
     HttpServer::new(|| App::new().service(health).service(check_image_exist))
         .bind(("127.0.0.1", 8080))?
         .run()
@@ -72,6 +83,8 @@ mod test {
 
     #[tokio::test]
     async fn check_image_slug_returns_error_on_failed_spawn() {
+        // Set command to non-existing binary
+        env::set_var("CRANE", "cran");
         let res = check_image_slug("docker.io/non-existent").await;
         assert!(res.is_err());
     }
