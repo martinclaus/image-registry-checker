@@ -1,5 +1,6 @@
 use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
 use serde::Deserialize;
+use std::process::Stdio;
 use tokio::process::Command;
 
 #[get("/health")]
@@ -32,8 +33,9 @@ async fn check_image_slug(image: impl AsRef<str>) -> std::io::Result<bool> {
     let mut child = Command::new("crane")
         .arg("manifest")
         .arg(image.as_ref())
-        .spawn()
-        .expect("Failed to spawn");
+        .stdout(Stdio::null())
+        .stderr(Stdio::null())
+        .spawn()?;
     let status = child.wait().await?;
     Ok(status.success())
 }
@@ -53,10 +55,24 @@ mod test {
     #[tokio::test]
     async fn check_image_slug_returns_true_on_success() {
         let res = check_image_slug("docker.io/alpine").await;
-
         assert!(res.is_ok());
         if let Ok(res) = res {
             assert!(res)
         }
+    }
+
+    #[tokio::test]
+    async fn check_image_slug_returns_false_on_invalid_slug() {
+        let res = check_image_slug("docker.io/non-existent").await;
+        assert!(res.is_ok());
+        if let Ok(res) = res {
+            assert!(!res)
+        }
+    }
+
+    #[tokio::test]
+    async fn check_image_slug_returns_error_on_failed_spawn() {
+        let res = check_image_slug("docker.io/non-existent").await;
+        assert!(res.is_err());
     }
 }
