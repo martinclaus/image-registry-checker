@@ -21,7 +21,7 @@ async fn check_image_exist(info: web::Query<ImageSlug>) -> impl Responder {
             if success {
                 HttpResponse::Ok()
             } else {
-                HttpResponse::ExpectationFailed()
+                HttpResponse::NotFound()
             }
         }
         Err(_) => HttpResponse::InternalServerError(),
