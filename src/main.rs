@@ -62,10 +62,10 @@ async fn main() {
 #[cfg(test)]
 mod test {
     use super::*;
+    use temp_env::with_var;
 
     #[tokio::test]
     async fn check_image_slug_returns_true_on_success() {
-        env::set_var("CRANE", "crane");
         let res = check_image_slug("docker.io/alpine").await;
         assert!(res.is_ok());
         if let Ok(res) = res {
@@ -75,7 +75,6 @@ mod test {
 
     #[tokio::test]
     async fn check_image_slug_returns_false_on_invalid_slug() {
-        env::set_var("CRANE", "crane");
         let res = check_image_slug("docker.io/non-existent").await;
         println!("{:?}", res);
         assert!(res.is_ok());
@@ -86,9 +85,12 @@ mod test {
 
     #[tokio::test]
     async fn check_image_slug_returns_error_on_failed_spawn() {
-        // Set command to non-existing binary
-        env::set_var("CRANE", "cran");
-        let res = check_image_slug("docker.io/non-existent").await;
+        let res = with_var("CRANE", Some("cran"), || async move {
+            env::set_var("CRANE", "cran");
+            let res = check_image_slug("docker.io/non-existent").await;
+            res
+        })
+        .await;
         assert!(res.is_err());
     }
 }
