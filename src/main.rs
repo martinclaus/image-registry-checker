@@ -66,19 +66,16 @@ mod filter {
             .then(move |p: ImageSlug| {
                 let checker = ImageChecker::new(cmd.as_str());
                 async move {
-                    match checker.check_image_slug(p.image).await {
+                    match checker.check_image_slug(p.image.as_str()).await {
                         Ok(true) => Response::builder()
                             .status(warp::http::StatusCode::OK)
-                            .body("ok"),
+                            .body("ok".to_owned()),
                         Ok(false) => Response::builder()
                             .status(warp::http::StatusCode::NOT_FOUND)
-                            .body("Image does not exist"),
-                        Err(e) => {
-                            log::error!("Spawn of subprocess failed: {}", e);
-                            Response::builder()
-                                .status(warp::http::StatusCode::INTERNAL_SERVER_ERROR)
-                                .body("")
-                        }
+                            .body(format!("Image {} does not exist", p.image)),
+                        Err(_) => Response::builder()
+                            .status(warp::http::StatusCode::INTERNAL_SERVER_ERROR)
+                            .body("".to_owned()),
                     }
                 }
             })
@@ -131,14 +128,22 @@ mod image_exist {
 
         /// Spawn crane to look up image
         pub async fn check_image_slug(&self, image: impl AsRef<str>) -> std::io::Result<bool> {
-            let mut child = Command::new(&self.cmd)
+            match Command::new(&self.cmd)
                 .arg("manifest")
                 .arg(image.as_ref())
                 .stdout(Stdio::null())
                 .stderr(Stdio::null())
-                .spawn()?;
-            let status = child.wait().await?;
-            Ok(status.success())
+                .spawn()
+            {
+                Ok(mut child) => {
+                    let status = child.wait().await?;
+                    Ok(status.success())
+                }
+                Err(e) => {
+                    log::error!("Failed to spawn subprocess: {}", e);
+                    Err(e)
+                }
+            }
         }
     }
 
