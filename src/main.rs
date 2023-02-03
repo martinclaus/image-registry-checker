@@ -35,8 +35,8 @@ async fn main() {
     let check_image = warp::get()
         .and(warp::path("exists"))
         .and(warp::query::<ImageSlug>())
-        .and_then(|p: ImageSlug| async move {
-            let response = match check_image_slug(p.image).await {
+        .then(|p: ImageSlug| async move {
+            match check_image_slug(p.image).await {
                 Ok(true) => Response::builder()
                     .status(warp::http::StatusCode::OK)
                     .body("ok"),
@@ -46,8 +46,7 @@ async fn main() {
                 Err(_) => Response::builder()
                     .status(warp::http::StatusCode::INTERNAL_SERVER_ERROR)
                     .body(""),
-            };
-            response.map_err(|_| warp::reject::reject())
+            }
         });
 
     let health_check = warp::get()
