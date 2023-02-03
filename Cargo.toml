@@ -2,16 +2,16 @@
 name = "image-registry-checker"
 version = "0.1.0"
 edition = "2021"
+authors = ["Martin Claus"]
+description = "Queries container registries if images exist"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+clap = { version = "4.1.4", features = ["derive", "env"] }
 dotenv = "0.15.0"
 log = "0.4.17"
 pretty_env_logger = "0.4.0"
 serde = {version="1.0.152", features=["derive"]}
 tokio = {version="1.25.0", features=["process", "macros", "rt-multi-thread"]}
 warp = "0.3.3"
-
-[dev-dependencies]
-temp-env = "0.3.1"
