@@ -1,4 +1,3 @@
-use clap::Parser;
 use dotenv::dotenv;
 use log;
 use pretty_env_logger;
@@ -7,28 +6,6 @@ use std::{fmt::Display, process::Stdio};
 use tokio::process::Command;
 use warp::{http::Response, Filter};
 
-#[derive(Parser)]
-#[command(author, version, about, long_about)]
-/// This webserver serves an API to check whether a container image is present
-/// in a registry or not. Currently, it only allows to query public registries
-/// (no authentication implemented) and serves only http (no encription).
-///
-/// To query for the image `docker.io/nginx`, run
-///
-/// curl "http://localhost:8080/exists?image=docker.io/nginx"
-struct CliArgs {
-    #[arg(short, long, default_value_t = std::net::IpAddr::V4(std::net::Ipv4Addr::new(127, 0, 0, 1)))]
-    /// IP adress to bind to
-    ip: std::net::IpAddr,
-
-    #[arg(short, long, default_value_t = 8080)]
-    /// Port to listen on
-    port: u16,
-
-    #[arg(short, long, default_value = "crane", env = "CRANE_CMD")]
-    /// Path and name of the crane executable
-    crane_cmd: String,
-}
 #[derive(Deserialize)]
 struct ImageSlug {
     image: String,
@@ -77,10 +54,10 @@ async fn main() {
         log::info!("Cannot read environment from .env: {}", e);
     };
 
-    let args = CliArgs::parse();
-    let socket_addr = std::net::SocketAddr::new(args.ip, args.port);
+    let args = cli::parse_args();
+    let socket_addr = std::net::SocketAddr::new(args.ip(), args.port());
     let checker = ImageChecker {
-        cmd: args.crane_cmd,
+        cmd: args.crane_cmd(),
     };
 
     let log = warp::log::custom(|info| match info.status() {
@@ -120,6 +97,51 @@ async fn main() {
     warp::serve(check_image.or(health_check).with(log))
         .run(socket_addr)
         .await
+}
+
+mod cli {
+    /// CLI config
+    use clap::Parser;
+
+    #[derive(Parser)]
+    #[command(author, version, about, long_about)]
+    /// This webserver serves an API to check whether a container image is present
+    /// in a registry or not. Currently, it only allows to query public registries
+    /// (no authentication implemented) and serves only http (no encription).
+    ///
+    /// To query for the image `docker.io/nginx`, run
+    ///
+    /// curl "http://localhost:8080/exists?image=docker.io/nginx"
+    pub struct Args {
+        #[arg(short, long, default_value_t = std::net::IpAddr::V4(std::net::Ipv4Addr::new(127, 0, 0, 1)))]
+        /// IP adress to bind to
+        ip: std::net::IpAddr,
+
+        #[arg(short, long, default_value_t = 8080)]
+        /// Port to listen on
+        port: u16,
+
+        #[arg(short, long, default_value = "crane", env = "CRANE_CMD")]
+        /// Path and name of the crane executable
+        crane_cmd: String,
+    }
+
+    impl Args {
+        pub fn ip(&self) -> std::net::IpAddr {
+            self.ip
+        }
+        pub fn port(&self) -> u16 {
+            self.port
+        }
+        pub fn crane_cmd(&self) -> String {
+            self.crane_cmd.clone()
+        }
+    }
+
+    /// Parse CLI args
+    pub fn parse_args() -> Args {
+        Args::parse()
+    }
 }
 
 #[cfg(test)]
