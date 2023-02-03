@@ -1,6 +1,16 @@
 use dotenv::dotenv;
 use log;
+use logging::LogString;
 use warp::Filter;
+
+fn log_func(info: warp::log::Info) {
+    match info.status() {
+        code if code.as_u16() >= warp::http::StatusCode::INTERNAL_SERVER_ERROR.as_u16() => {
+            log::error!("{}", LogString(&info))
+        }
+        _ => log::info!("{}", LogString(&info)),
+    }
+}
 
 #[tokio::main]
 async fn main() {
@@ -17,14 +27,14 @@ async fn main() {
     warp::serve(
         filter::check_image(crane_cmd)
             .or(filter::health_check())
-            .with(filter::log()),
+            .with(filter::log(log_func)),
     )
     .run(socket_addr)
     .await
 }
 
 mod filter {
-    use crate::{image_exist::ImageChecker, logging::log_func};
+    use crate::image_exist::ImageChecker;
     use serde::Deserialize;
     use warp::{
         http::Response,
@@ -37,7 +47,7 @@ mod filter {
         pub image: String,
     }
 
-    pub fn log() -> Log<fn(Info)> {
+    pub fn log(log_func: fn(Info)) -> Log<fn(Info)> {
         warp::log::custom(log_func)
     }
 
@@ -80,7 +90,7 @@ mod logging {
     use pretty_env_logger;
     use std::fmt::Display;
 
-    struct LogString<'a, T>(&'a T);
+    pub struct LogString<'a, T>(pub &'a T);
 
     impl<'a> Display for LogString<'a, warp::log::Info<'a>> {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -96,17 +106,10 @@ mod logging {
         }
     }
 
-    pub fn log_func(info: warp::log::Info) {
-        match info.status() {
-            code if code.as_u16() >= warp::http::StatusCode::INTERNAL_SERVER_ERROR.as_u16() => {
-                log::error!("{}", LogString(&info))
-            }
-            _ => log::info!("{}", LogString(&info)),
-        }
-    }
-
     pub fn init() {
-        pretty_env_logger::init_timed();
+        pretty_env_logger::formatted_timed_builder()
+            .filter_level(log::LevelFilter::Info)
+            .init();
     }
 }
 
