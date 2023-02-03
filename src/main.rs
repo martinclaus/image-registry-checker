@@ -2,13 +2,29 @@ use dotenv::dotenv;
 use log;
 use pretty_env_logger;
 use serde::Deserialize;
-use std::{env, process::Stdio};
+use std::{env, fmt::Display, process::Stdio};
 use tokio::process::Command;
 use warp::{http::Response, Filter};
 
 #[derive(Deserialize)]
 struct ImageSlug {
     image: String,
+}
+
+struct LogString<'a, T>(&'a T);
+
+impl<'a> Display for LogString<'a, warp::log::Info<'a>> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let s = format!(
+            "{} {} ({:.2?}) {}",
+            self.0.method(),
+            self.0.path(),
+            self.0.elapsed(),
+            self.0.status()
+        );
+
+        write!(f, "{}", s)
+    }
 }
 
 async fn check_image_slug(image: impl AsRef<str>) -> std::io::Result<bool> {
@@ -40,21 +56,9 @@ async fn main() {
 
     let log = warp::log::custom(|info| match info.status() {
         code if code.as_u16() >= warp::http::StatusCode::INTERNAL_SERVER_ERROR.as_u16() => {
-            log::error!(
-                "{} {} ({:.2?}) {}",
-                info.method(),
-                info.path(),
-                info.elapsed(),
-                info.status()
-            )
+            log::error!("{}", LogString(&info))
         }
-        _ => log::info!(
-            "{} {} ({:.2?}) {}",
-            info.method(),
-            info.path(),
-            info.elapsed(),
-            info.status()
-        ),
+        _ => log::info!("{}", LogString(&info)),
     });
 
     let check_image = warp::get()
