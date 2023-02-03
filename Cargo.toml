@@ -1,5 +1,5 @@
 [package]
-name = "container-image-checker"
+name = "image-registry-checker"
 version = "0.1.0"
 edition = "2021"
 

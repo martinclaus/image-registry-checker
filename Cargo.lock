@@ -78,19 +78,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
-name = "container-image-checker"
-version = "0.1.0"
-dependencies = [
- "dotenv",
- "log",
- "pretty_env_logger",
- "serde",
- "temp-env",
- "tokio",
- "warp",
-]
-
-[[package]]
 name = "cpufeatures"
 version = "0.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -368,6 +355,19 @@ checksum = "e14ddfc70884202db2244c223200c204c2bda1bc6e0998d11b5e024d657209e6"
 dependencies = [
  "unicode-bidi",
  "unicode-normalization",
+]
+
+[[package]]
+name = "image-registry-checker"
+version = "0.1.0"
+dependencies = [
+ "dotenv",
+ "log",
+ "pretty_env_logger",
+ "serde",
+ "temp-env",
+ "tokio",
+ "warp",
 ]
 
 [[package]]
