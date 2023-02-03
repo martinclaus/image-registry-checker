@@ -34,13 +34,14 @@ async fn main() {
 }
 
 mod filter {
-    use crate::image_exist::ImageChecker;
     use serde::Deserialize;
     use warp::{
         http::Response,
         log::{Info, Log},
         Filter, Rejection, Reply,
     };
+
+    use crate::image_exist::check_image_slug;
 
     #[derive(Deserialize)]
     pub struct ImageSlug {
@@ -64,9 +65,9 @@ mod filter {
             .and(warp::path("exists"))
             .and(warp::query::<ImageSlug>())
             .then(move |p: ImageSlug| {
-                let checker = ImageChecker::new(cmd.as_str());
+                let cmd = cmd.clone();
                 async move {
-                    match checker.check_image_slug(p.image.as_str()).await {
+                    match check_image_slug(cmd.as_str(), p.image.as_str()).await {
                         Ok(true) => Response::builder()
                             .status(warp::http::StatusCode::OK)
                             .body("ok".to_owned()),
@@ -115,48 +116,36 @@ mod image_exist {
     use std::process::Stdio;
     use tokio::process::Command;
 
-    #[derive(Clone, Debug)]
-    pub struct ImageChecker {
-        cmd: String,
-    }
-
-    impl ImageChecker {
-        /// Create ImageChecker
-        pub fn new(cmd: &str) -> Self {
-            Self { cmd: cmd.into() }
-        }
-
-        /// Spawn crane to look up image
-        pub async fn check_image_slug(&self, image: impl AsRef<str>) -> std::io::Result<bool> {
-            match Command::new(&self.cmd)
-                .arg("manifest")
-                .arg(image.as_ref())
-                .stdout(Stdio::null())
-                .stderr(Stdio::null())
-                .spawn()
-            {
-                Ok(mut child) => {
-                    let status = child.wait().await?;
-                    Ok(status.success())
-                }
-                Err(e) => {
-                    log::error!("Failed to spawn subprocess: {}", e);
-                    Err(e)
-                }
+    /// Spawn crane to look up image
+    pub async fn check_image_slug(
+        cmd: impl AsRef<str>,
+        image: impl AsRef<str>,
+    ) -> std::io::Result<bool> {
+        match Command::new(cmd.as_ref())
+            .arg("manifest")
+            .arg(image.as_ref())
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
+            .spawn()
+        {
+            Ok(mut child) => {
+                let status = child.wait().await?;
+                Ok(status.success())
+            }
+            Err(e) => {
+                log::error!("Failed to spawn subprocess: {}", e);
+                Err(e)
             }
         }
     }
 
     #[cfg(test)]
     mod test {
-        use super::*;
+        use super::check_image_slug;
 
         #[tokio::test]
         async fn check_image_slug_returns_true_on_success() {
-            let checker = ImageChecker {
-                cmd: "crane".into(),
-            };
-            let res = checker.check_image_slug("docker.io/alpine").await;
+            let res = check_image_slug("crane", "docker.io/alpine").await;
             assert!(res.is_ok());
             if let Ok(res) = res {
                 assert!(res)
@@ -165,10 +154,7 @@ mod image_exist {
 
         #[tokio::test]
         async fn check_image_slug_returns_false_on_invalid_slug() {
-            let checker = ImageChecker {
-                cmd: "crane".into(),
-            };
-            let res = checker.check_image_slug("docker.io/non-existent").await;
+            let res = check_image_slug("crane", "docker.io/non-existent").await;
             println!("{:?}", res);
             assert!(res.is_ok());
             if let Ok(res) = res {
@@ -178,10 +164,7 @@ mod image_exist {
 
         #[tokio::test]
         async fn check_image_slug_returns_error_on_failed_spawn() {
-            let checker = ImageChecker {
-                cmd: "not-existent".into(),
-            };
-            let res = checker.check_image_slug("docker.io/non-existent").await;
+            let res = check_image_slug("non-existent", "docker.io/alpine").await;
             assert!(res.is_err());
         }
     }
