@@ -40,9 +40,21 @@ async fn main() {
 
     let log = warp::log::custom(|info| match info.status() {
         code if code.as_u16() >= warp::http::StatusCode::INTERNAL_SERVER_ERROR.as_u16() => {
-            log::error!("{} {} {}", info.method(), info.path(), info.status())
+            log::error!(
+                "{} {} ({:.2?}) {}",
+                info.method(),
+                info.path(),
+                info.elapsed(),
+                info.status()
+            )
         }
-        _ => log::info!("{} {} {}", info.method(), info.path(), info.status()),
+        _ => log::info!(
+            "{} {} ({:.2?}) {}",
+            info.method(),
+            info.path(),
+            info.elapsed(),
+            info.status()
+        ),
     });
 
     let check_image = warp::get()
@@ -52,13 +64,13 @@ async fn main() {
             match check_image_slug(p.image).await {
                 Ok(true) => Response::builder()
                     .status(warp::http::StatusCode::OK)
-                    .body("ok"),
+                    .body("ok".to_owned()),
                 Ok(false) => Response::builder()
                     .status(warp::http::StatusCode::NOT_FOUND)
-                    .body("Image does not exist"),
-                Err(_) => Response::builder()
+                    .body("Image does not exist".to_owned()),
+                Err(e) => Response::builder()
                     .status(warp::http::StatusCode::INTERNAL_SERVER_ERROR)
-                    .body(""),
+                    .body(format!("{}", e)),
             }
         });
 
