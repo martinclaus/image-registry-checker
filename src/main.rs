@@ -1,4 +1,6 @@
 use dotenv::dotenv;
+use log;
+use pretty_env_logger;
 use serde::Deserialize;
 use std::{env, process::Stdio};
 use tokio::process::Command;
@@ -30,7 +32,18 @@ fn get_crane_command() -> String {
 
 #[tokio::main]
 async fn main() {
-    dotenv().ok();
+    pretty_env_logger::init_timed();
+
+    if let Err(e) = dotenv() {
+        log::info!("Cannot read environment from .env: {}", e);
+    };
+
+    let log = warp::log::custom(|info| match info.status() {
+        code if code.as_u16() >= warp::http::StatusCode::INTERNAL_SERVER_ERROR.as_u16() => {
+            log::error!("{} {} {}", info.method(), info.path(), info.status())
+        }
+        _ => log::info!("{} {} {}", info.method(), info.path(), info.status()),
+    });
 
     let check_image = warp::get()
         .and(warp::path("exists"))
@@ -49,11 +62,13 @@ async fn main() {
             }
         });
 
+    // let log = warp::log::
+
     let health_check = warp::get()
         .and(warp::path("health"))
         .map(|| Response::builder().body("Ok"));
 
-    warp::serve(check_image.or(health_check))
+    warp::serve(check_image.or(health_check).with(log))
         .run(([127, 0, 0, 1], 8080))
         .await
 }
