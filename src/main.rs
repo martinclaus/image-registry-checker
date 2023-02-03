@@ -64,13 +64,16 @@ async fn main() {
             match check_image_slug(p.image).await {
                 Ok(true) => Response::builder()
                     .status(warp::http::StatusCode::OK)
-                    .body("ok".to_owned()),
+                    .body("ok"),
                 Ok(false) => Response::builder()
                     .status(warp::http::StatusCode::NOT_FOUND)
-                    .body("Image does not exist".to_owned()),
-                Err(e) => Response::builder()
-                    .status(warp::http::StatusCode::INTERNAL_SERVER_ERROR)
-                    .body(format!("{}", e)),
+                    .body("Image does not exist"),
+                Err(e) => {
+                    log::error!("Spawn of subprocess failed: {}", e);
+                    Response::builder()
+                        .status(warp::http::StatusCode::INTERNAL_SERVER_ERROR)
+                        .body("")
+                }
             }
         });
 
