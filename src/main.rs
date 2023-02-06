@@ -1,6 +1,9 @@
+use std::sync::Arc;
+
 use dotenv::dotenv;
 use log;
 use logging::LogString;
+use utoipa_swagger_ui::Config;
 use warp::Filter;
 
 fn log_func(info: warp::log::Info) {
@@ -20,13 +23,24 @@ async fn main() {
         log::info!("Cannot read environment from .env: {}", e);
     };
 
+    let config = Arc::new(Config::from("/api-doc.json"));
+
     let args = cli::parse_args();
     let socket_addr = std::net::SocketAddr::new(args.ip(), args.port());
     let crane_cmd = args.crane_cmd();
 
+    let swagger_ui = warp::path("swagger-ui")
+        .and(warp::get())
+        .and(warp::path::full())
+        .and(warp::path::tail())
+        .and(warp::any().map(move || config.clone()))
+        .and_then(filter::serve_swagger);
+
     warp::serve(
         filter::check_image(crane_cmd)
-            .or(filter::health_check())
+            .or(filter::health())
+            .or(filter::api_doc())
+            .or(swagger_ui)
             .with(filter::log(log_func)),
     )
     .run(socket_addr)
@@ -34,17 +48,26 @@ async fn main() {
 }
 
 mod filter {
+    use std::{convert::Infallible, sync::Arc};
+
     use serde::Deserialize;
+    use utoipa::{IntoParams, OpenApi};
+    use utoipa_swagger_ui::Config;
     use warp::{
         http::Response,
+        hyper::{StatusCode, Uri},
         log::{Info, Log},
+        path::{FullPath, Tail},
         Filter, Rejection, Reply,
     };
 
     use crate::image_exist::check_image_slug;
 
-    #[derive(Deserialize)]
+    #[derive(Deserialize, IntoParams)]
+    #[into_params(parameter_in = Query)]
     pub struct ImageSlug {
+        /// URI of an image in a public remote container repository
+        #[param(inline, example = "docker.io/nginx")]
         pub image: String,
     }
 
@@ -52,12 +75,31 @@ mod filter {
         warp::log::custom(log_func)
     }
 
-    pub fn health_check() -> impl Filter<Extract = (impl Reply,), Error = Rejection> + Clone {
-        warp::get()
-            .and(warp::path("health"))
-            .map(|| Response::builder().body("Ok"))
+    pub async fn health_check() -> Result<String, Infallible> {
+        Ok("Ok".into())
     }
 
+    #[utoipa::path(
+        get,
+        path = "/health",
+        responses(
+            (status = 200, description = "Service is up and running", content_type="text/plain")
+        )
+    )]
+    pub fn health() -> impl Filter<Extract = (impl Reply,), Error = Rejection> + Clone {
+        warp::get().and(warp::path("health")).and_then(health_check)
+    }
+
+    #[utoipa::path(
+        get,
+        path = "/exists",
+        params(ImageSlug),
+        responses(
+            (status = StatusCode::OK, description = "Image exists", content_type="text/plain"),
+            (status = StatusCode::NOT_FOUND, description = "Image lookup failed", content_type="text/plain"),
+            (status = StatusCode::INTERNAL_SERVER_ERROR, description = "Internal server error", content_type="text/plain"),
+        )
+    )]
     pub fn check_image(
         cmd: String,
     ) -> impl Filter<Extract = (impl Reply,), Error = Rejection> + Clone {
@@ -69,17 +111,55 @@ mod filter {
                 async move {
                     match check_image_slug(cmd.as_str(), p.image.as_str()).await {
                         Ok(true) => Response::builder()
-                            .status(warp::http::StatusCode::OK)
+                            .status(StatusCode::OK)
                             .body("ok".to_owned()),
                         Ok(false) => Response::builder()
-                            .status(warp::http::StatusCode::NOT_FOUND)
+                            .status(StatusCode::NOT_FOUND)
                             .body(format!("Image {} does not exist", p.image)),
                         Err(_) => Response::builder()
-                            .status(warp::http::StatusCode::INTERNAL_SERVER_ERROR)
+                            .status(StatusCode::INTERNAL_SERVER_ERROR)
                             .body("".to_owned()),
                     }
                 }
             })
+    }
+
+    pub fn api_doc() -> impl Filter<Extract = (impl Reply,), Error = Rejection> + Clone {
+        warp::path("api-doc.json")
+            .and(warp::get())
+            .map(|| warp::reply::json(&crate::doc::ApiDoc::openapi()))
+    }
+
+    pub async fn serve_swagger(
+        full_path: FullPath,
+        tail: Tail,
+        config: Arc<Config<'static>>,
+    ) -> Result<Box<dyn Reply + 'static>, Rejection> {
+        if full_path.as_str() == "/swagger-ui" {
+            return Ok(Box::new(warp::redirect::found(Uri::from_static(
+                "/swagger-ui/",
+            ))));
+        }
+
+        let path = tail.as_str();
+        match utoipa_swagger_ui::serve(path, config) {
+            Ok(file) => {
+                if let Some(file) = file {
+                    Ok(Box::new(
+                        Response::builder()
+                            .header("Content-Type", file.content_type)
+                            .body(file.bytes),
+                    ))
+                } else {
+                    Ok(Box::new(StatusCode::NOT_FOUND))
+                }
+            }
+            Err(error) => Ok(Box::new(
+                Response::builder()
+                    .status(StatusCode::INTERNAL_SERVER_ERROR)
+                    .body(error.to_string()),
+            )),
+        }
     }
 }
 
@@ -213,4 +293,12 @@ mod cli {
     pub fn parse_args() -> Args {
         Args::parse()
     }
+}
+
+mod doc {
+    use utoipa::OpenApi;
+
+    #[derive(OpenApi)]
+    #[openapi(paths(crate::filter::health, crate::filter::check_image))]
+    pub struct ApiDoc;
 }
