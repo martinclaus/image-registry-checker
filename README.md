@@ -28,7 +28,7 @@ This webserver serves an API to check whether a container image is present in a 
 
 To query for the image `docker.io/nginx`, run
 
-curl "http://localhost:8080/exists?image=docker.io/nginx"
+curl "http://<SERVER_URL>/exists?image=docker.io/nginx"
 
 Usage: image-registry-checker [OPTIONS]
 
@@ -55,3 +55,5 @@ Options:
   -V, --version
           Print version
 ```
+
+The server serves API docs with Swagger UI at `http://<SERVER_URL>/swagger-ui` and OpenAPI docs at `http://<SERVER_URL>/api-doc.json`.
