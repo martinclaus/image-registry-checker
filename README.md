@@ -56,4 +56,6 @@ Options:
           Print version
 ```
 
+Note that the [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane.md) executable needs to be installed separately.
+
 The server serves API docs with Swagger UI at `http://<SERVER_URL>/swagger-ui` and OpenAPI docs at `http://<SERVER_URL>/api-doc.json`.
