@@ -19,13 +19,16 @@ fn log_func(info: warp::log::Info) {
 async fn main() {
     logging::init();
 
-    if let Err(e) = dotenv() {
-        log::info!("Cannot read environment from .env: {}", e);
-    };
+    let env_pars_res = dotenv();
 
     let config = Arc::new(Config::from("/api-doc.json"));
 
     let args = cli::parse_args();
+
+    if let Err(e) = env_pars_res {
+        log::info!("Cannot read environment from .env: {}", e);
+    }
+
     let socket_addr = std::net::SocketAddr::new(args.ip(), args.port());
     let crane_cmd = args.crane_cmd();
 
