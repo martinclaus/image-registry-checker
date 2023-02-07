@@ -60,3 +60,16 @@ Options:
 Note that the [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane.md) executable needs to be installed separately.
 
 The server serves API docs with Swagger UI at `http://<SERVER_URL>/swagger-ui` and OpenAPI docs at `http://<SERVER_URL>/api-doc.json`.
+
+## Build Container
+Alternatively, you can also build a docker container from this repository. Just clone it and run
+```bash
+docker build -t <YOUR_IMAGE_NAME> .
+```
+from within the repository root. This will take care of installing any build-time and run-time dependencies, so you do have to install rust.
+
+The container will expose port 80 to accept incomming http requests. After starting the container, e.g. like this
+```bash
+docker run --rm -p80:8080 <YOUR_IMAGE_NAME>
+```
+you can check, if the service is up by visiting http://localhost:8080/health, which should return "OK".
