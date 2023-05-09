@@ -9,7 +9,7 @@ Currently, the server does not support encryption or authentication with private
 
 1. [Install rust](https://www.rust-lang.org/tools/install)
 2. Clone this repository
-3. Build from create root
+3. Build from crate root
 ```bash
 cd image-repository-checker
 cargo build --release
