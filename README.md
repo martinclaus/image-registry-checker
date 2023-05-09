@@ -5,7 +5,7 @@ public registry. For the lookup, [crane](https://github.com/google/go-containerr
 
 Currently, the server does not support encryption or authentication with private registries.
 
-## Build
+## Build from Source
 
 1. [Install rust](https://www.rust-lang.org/tools/install)
 2. Clone this repository
@@ -19,8 +19,20 @@ cargo build --release
 cp target/release/image-registry-checker /SOME/PLACE/YOU/WANT/IT/TO/BE
 ```
 
-## Use
+## Build Container
+Alternatively, you can also build a docker container from this repository. Just clone it and run the following command from within the repository root:
+```bash
+docker build -t <YOUR_IMAGE_NAME> .
+```
+This will take care of installing any build-time and run-time dependencies, so you do have to install rust or `crane`.
 
+The container will expose port 80 to accept incoming http requests. After starting the container, e.g. like this
+```bash
+docker run --rm -p80:8080 <YOUR_IMAGE_NAME>
+```
+you can check, if the service is up by visiting http://localhost:8080/health, which should return "OK".
+
+## Use
 See help for usage information
 ```bash
 image-registry-checker --help
@@ -61,15 +73,4 @@ Note that the [crane](https://github.com/google/go-containerregistry/blob/main/c
 
 The server serves API docs with Swagger UI at `http://<SERVER_URL>/swagger-ui` and OpenAPI docs at `http://<SERVER_URL>/api-doc.json`.
 
-## Build Container
-Alternatively, you can also build a docker container from this repository. Just clone it and run the following command from within the repository root:
-```bash
-docker build -t <YOUR_IMAGE_NAME> .
-```
-This will take care of installing any build-time and run-time dependencies, so you do have to install rust or `crane`.
 
-The container will expose port 80 to accept incoming http requests. After starting the container, e.g. like this
-```bash
-docker run --rm -p80:8080 <YOUR_IMAGE_NAME>
-```
-you can check, if the service is up by visiting http://localhost:8080/health, which should return "OK".
