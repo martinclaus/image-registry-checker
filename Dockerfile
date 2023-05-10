@@ -18,4 +18,4 @@ COPY --from=crane-builder /go/bin/crane /
 COPY --from=rust-builder /app/target/release/image-registry-checker /
 EXPOSE 80
 ENTRYPOINT ["./image-registry-checker"]
-CMD ["--port=80", "--ip=0.0.0.0", "--crane-cmd=/crane"]
+CMD ["--port=8080", "--ip=0.0.0.0", "--crane-cmd=/crane"]

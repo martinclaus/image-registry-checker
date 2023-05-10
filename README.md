@@ -26,9 +26,9 @@ docker build -t <YOUR_IMAGE_NAME> .
 ```
 This will take care of installing any build-time and run-time dependencies, so you do have to install rust or `crane`.
 
-The container will expose port 80 to accept incoming http requests. After starting the container, e.g. like this
+The container will expose port 8080 to accept incoming http requests. After starting the container, e.g. like this
 ```bash
-docker run --rm -p80:8080 <YOUR_IMAGE_NAME>
+docker run --rm -p8080:8080 <YOUR_IMAGE_NAME>
 ```
 you can check, if the service is up by visiting http://localhost:8080/health, which should return "OK".
 
