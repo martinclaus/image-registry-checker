@@ -2,12 +2,30 @@
 
 # image-registry-checker integration tests
 
+# heavily inspired by
+# Python's "assert" syntax
+# https://github.com/pytest-dev/pytest
+# https://github.com/sstephenson/bats
+# https://github.com/torokmark/assert.sh
+
+# relevant docs
+# https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html
+# https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html
+# https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html
+# https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html
+# https://www.gnu.org/software/bash/manual/html_node/Command-Substitution.html
+# https://www.gnu.org/software/bash/manual/html_node/Conditional-Constructs.html
+# https://www.gnu.org/software/bash/manual/html_node/Redirections.html
+# https://www.gnu.org/software/bash/manual/html_node/Shell-Functions.html
+# https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html
+# https://www.gnu.org/software/gawk/manual/html_node/Fields.html
+
+# see also: https://www.shellcheck.net/
+
 assert() {
 
- # https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html#index-_0040
- # https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html#index-_003f
- # https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html#index-declare
- # https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#index-FUNCNAME
+ # https://stackoverflow.com/a/372120
+ # https://stackoverflow.com/a/36585074
 
  "$@"; EXITCODE=$?
  
@@ -49,6 +67,7 @@ test_if_service_is_running() {
 }
 
 get_http_status_code() {
+  # https://superuser.com/a/442395
   curl "$1" -s -o /dev/null -w '%{http_code}'
 }
 
