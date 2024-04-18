@@ -29,14 +29,14 @@ response_only() {
  "$@" | awk '{ print $NF }'
 }
 
-selftest_string_conditionals() {
+selftest_assert_string_conditionals() {
   RESPONSE=$(response_only assert [ "ABC" = "ABC" ])
   if [ "$RESPONSE" = 'PASSED' ]; then echo "${FUNCNAME[0]} ... PASSED"; else echo "${FUNCNAME[0]} ... FAILED" && exit 1; fi
   RESPONSE=$(response_only assert [ "ABC" = "DEF" ])
   if [ "$RESPONSE" = 'FAILED' ]; then echo "${FUNCNAME[0]} ... PASSED"; else echo "${FUNCNAME[0]} ... FAILED" && exit 1; fi
 }
 
-selftest_arithmetic_conditionals() {
+selftest_assert_arithmetic_conditionals() {
   RESPONSE=$(response_only assert [ 0 -eq 0 ])
   if [ "$RESPONSE" = 'PASSED' ]; then echo "${FUNCNAME[0]} ... PASSED"; else echo "${FUNCNAME[0]} ... FAILED" && exit 1; fi
   RESPONSE=$(response_only assert [ 0 -eq 1 ])
@@ -86,8 +86,8 @@ test_openolat_return_code_interoperability() {
 }
 
 echo ""; echo "Running selftests..."
-selftest_string_conditionals
-selftest_arithmetic_conditionals
+selftest_assert_string_conditionals
+selftest_assert_arithmetic_conditionals
 
 echo ""; echo "Building container image..."
 docker build -t image-registry-checker:latest .
