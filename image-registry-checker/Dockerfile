@@ -1,4 +1,3 @@
-
 # $ git log src/main.rs | head -n 3
 # commit 75e8107dee10516aea845be9545ba46352e03a4a
 # Author: Martin Claus <mclaus@geomar.de>
