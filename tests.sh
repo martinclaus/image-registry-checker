@@ -111,8 +111,9 @@ selftest_assert_arithmetic_conditionals
 echo ""; echo "Building container image..."
 docker build -t image-registry-checker:latest .
 
-echo ""; echo "Starting service..."
 CONTAINER=image-registry-checker
+
+echo ""; echo "Starting service..."
 docker run --detach --name "$CONTAINER" -p 8080:8080 image-registry-checker:latest 1>/dev/null
 docker logs "$CONTAINER"
 
