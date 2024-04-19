@@ -3,7 +3,7 @@ ARG RUST_VERSION=1
 
 # Crane Builder
 FROM golang:${GO_VERSION} as crane-builder
-ENV CRANE_VERSION=v0.13
+ENV CRANE_VERSION=v0.19.1
 RUN CGO_ENABLED=0 go install github.com/google/go-containerregistry/cmd/crane@${CRANE_VERSION}
 
 # Rust builder
