@@ -114,7 +114,7 @@ docker build -t image-registry-checker:latest .
 CONTAINER=image-registry-checker
 
 echo ""; echo "Starting service..."
-docker run --detach --name "$CONTAINER" -p 8080:8080 image-registry-checker:latest 1>/dev/null
+docker run --rm --detach --name "$CONTAINER" -p 8080:8080 image-registry-checker:latest 1>/dev/null
 docker logs "$CONTAINER"
 
 echo ""; echo "Ensuring that service is running..."
@@ -132,7 +132,6 @@ docker logs "$CONTAINER"
 
 echo ""; echo "Stopping service..."
 docker container stop "$CONTAINER" 1>/dev/null
-docker container rm "$CONTAINER" 1>/dev/null
 
 echo ""; echo "Done."
 
