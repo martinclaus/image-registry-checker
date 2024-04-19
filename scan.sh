@@ -1,7 +1,7 @@
 #!/bin/sh
 
 CRANE_VERSION=v0.13.0
-SEVERITY=MEDIUM,HIGH,CRITICAL
+SEVERITY=UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL
 
 # $ sh scan.sh image-registry-checker:latest
 
