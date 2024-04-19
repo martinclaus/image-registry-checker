@@ -1,0 +1,221 @@
+Enumerating objects: 10334, done.
+Counting objects:   0% (1/10334)Counting objects:   1% (104/10334)Counting objects:   2% (207/10334)Counting objects:   3% (311/10334)Counting objects:   4% (414/10334)Counting objects:   5% (517/10334)Counting objects:   6% (621/10334)Counting objects:   7% (724/10334)Counting objects:   8% (827/10334)Counting objects:   9% (931/10334)Counting objects:  10% (1034/10334)Counting objects:  11% (1137/10334)Counting objects:  12% (1241/10334)Counting objects:  13% (1344/10334)Counting objects:  14% (1447/10334)Counting objects:  15% (1551/10334)Counting objects:  16% (1654/10334)Counting objects:  17% (1757/10334)Counting objects:  18% (1861/10334)Counting objects:  19% (1964/10334)Counting objects:  20% (2067/10334)Counting objects:  21% (2171/10334)Counting objects:  22% (2274/10334)Counting objects:  23% (2377/10334)Counting objects:  24% (2481/10334)Counting objects:  25% (2584/10334)Counting objects:  26% (2687/10334)Counting objects:  27% (2791/10334)Counting objects:  28% (2894/10334)Counting objects:  29% (2997/10334)Counting objects:  30% (3101/10334)Counting objects:  31% (3204/10334)Counting objects:  32% (3307/10334)Counting objects:  33% (3411/10334)Counting objects:  34% (3514/10334)Counting objects:  35% (3617/10334)Counting objects:  36% (3721/10334)Counting objects:  37% (3824/10334)Counting objects:  38% (3927/10334)Counting objects:  39% (4031/10334)Counting objects:  40% (4134/10334)Counting objects:  41% (4237/10334)Counting objects:  42% (4341/10334)Counting objects:  43% (4444/10334)Counting objects:  44% (4547/10334)Counting objects:  45% (4651/10334)Counting objects:  46% (4754/10334)Counting objects:  47% (4857/10334)Counting objects:  48% (4961/10334)Counting objects:  49% (5064/10334)Counting objects:  50% (5167/10334)Counting objects:  51% (5271/10334)Counting objects:  52% (5374/10334)Counting objects:  53% (5478/10334)Counting objects:  54% (5581/10334)Counting objects:  55% (5684/10334)Counting objects:  56% (5788/10334)Counting objects:  57% (5891/10334)Counting objects:  58% (5994/10334)Counting objects:  59% (6098/10334)Counting objects:  60% (6201/10334)Counting objects:  61% (6304/10334)Counting objects:  62% (6408/10334)Counting objects:  63% (6511/10334)Counting objects:  64% (6614/10334)Counting objects:  65% (6718/10334)Counting objects:  66% (6821/10334)Counting objects:  67% (6924/10334)Counting objects:  68% (7028/10334)Counting objects:  69% (7131/10334)Counting objects:  70% (7234/10334)Counting objects:  71% (7338/10334)Counting objects:  72% (7441/10334)Counting objects:  73% (7544/10334)Counting objects:  74% (7648/10334)Counting objects:  75% (7751/10334)Counting objects:  76% (7854/10334)Counting objects:  77% (7958/10334)Counting objects:  78% (8061/10334)Counting objects:  79% (8164/10334)Counting objects:  80% (8268/10334)Counting objects:  81% (8371/10334)Counting objects:  82% (8474/10334)Counting objects:  83% (8578/10334)Counting objects:  84% (8681/10334)Counting objects:  85% (8784/10334)Counting objects:  86% (8888/10334)Counting objects:  87% (8991/10334)Counting objects:  88% (9094/10334)Counting objects:  89% (9198/10334)Counting objects:  90% (9301/10334)Counting objects:  91% (9404/10334)Counting objects:  92% (9508/10334)Counting objects:  93% (9611/10334)Counting objects:  94% (9714/10334)Counting objects:  95% (9818/10334)Counting objects:  96% (9921/10334)Counting objects:  97% (10024/10334)Counting objects:  98% (10128/10334)Counting objects:  99% (10231/10334)Counting objects: 100% (10334/10334)Counting objects: 100% (10334/10334), done.
+Compressing objects:   0% (1/5852)Compressing objects:   1% (59/5852)Compressing objects:   2% (118/5852)Compressing objects:   3% (176/5852)Compressing objects:   4% (235/5852)Compressing objects:   5% (293/5852)Compressing objects:   6% (352/5852)Compressing objects:   7% (410/5852)Compressing objects:   8% (469/5852)Compressing objects:   9% (527/5852)Compressing objects:  10% (586/5852)Compressing objects:  11% (644/5852)Compressing objects:  12% (703/5852)Compressing objects:  13% (761/5852)Compressing objects:  14% (820/5852)Compressing objects:  15% (878/5852)Compressing objects:  16% (937/5852)Compressing objects:  17% (995/5852)Compressing objects:  18% (1054/5852)Compressing objects:  19% (1112/5852)Compressing objects:  20% (1171/5852)Compressing objects:  21% (1229/5852)Compressing objects:  22% (1288/5852)Compressing objects:  23% (1346/5852)Compressing objects:  24% (1405/5852)Compressing objects:  25% (1463/5852)Compressing objects:  26% (1522/5852)Compressing objects:  27% (1581/5852)Compressing objects:  28% (1639/5852)Compressing objects:  29% (1698/5852)Compressing objects:  30% (1756/5852)Compressing objects:  31% (1815/5852)Compressing objects:  32% (1873/5852)Compressing objects:  33% (1932/5852)Compressing objects:  34% (1990/5852)Compressing objects:  35% (2049/5852)Compressing objects:  36% (2107/5852)Compressing objects:  37% (2166/5852)Compressing objects:  38% (2224/5852)Compressing objects:  39% (2283/5852)Compressing objects:  40% (2341/5852)Compressing objects:  41% (2400/5852)Compressing objects:  42% (2458/5852)Compressing objects:  43% (2517/5852)Compressing objects:  44% (2575/5852)Compressing objects:  45% (2634/5852)Compressing objects:  46% (2692/5852)Compressing objects:  47% (2751/5852)Compressing objects:  48% (2809/5852)Compressing objects:  49% (2868/5852)Compressing objects:  50% (2926/5852)Compressing objects:  51% (2985/5852)Compressing objects:  52% (3044/5852)Compressing objects:  53% (3102/5852)Compressing objects:  54% (3161/5852)Compressing objects:  55% (3219/5852)Compressing objects:  56% (3278/5852)Compressing objects:  57% (3336/5852)Compressing objects:  58% (3395/5852)Compressing objects:  59% (3453/5852)Compressing objects:  60% (3512/5852)Compressing objects:  61% (3570/5852)Compressing objects:  62% (3629/5852)Compressing objects:  63% (3687/5852)Compressing objects:  64% (3746/5852)Compressing objects:  65% (3804/5852)Compressing objects:  66% (3863/5852)Compressing objects:  67% (3921/5852)Compressing objects:  68% (3980/5852)Compressing objects:  69% (4038/5852)Compressing objects:  70% (4097/5852)Compressing objects:  71% (4155/5852)Compressing objects:  72% (4214/5852)Compressing objects:  73% (4272/5852)Compressing objects:  74% (4331/5852)Compressing objects:  75% (4389/5852)Compressing objects:  76% (4448/5852)Compressing objects:  77% (4507/5852)Compressing objects:  78% (4565/5852)Compressing objects:  79% (4624/5852)Compressing objects:  80% (4682/5852)Compressing objects:  81% (4741/5852)Compressing objects:  82% (4799/5852)Compressing objects:  83% (4858/5852)Compressing objects:  84% (4916/5852)Compressing objects:  85% (4975/5852)Compressing objects:  86% (5033/5852)Compressing objects:  87% (5092/5852)Compressing objects:  88% (5150/5852)Compressing objects:  89% (5209/5852)Compressing objects:  90% (5267/5852)Compressing objects:  91% (5326/5852)Compressing objects:  92% (5384/5852)Compressing objects:  93% (5443/5852)Compressing objects:  94% (5501/5852)Compressing objects:  95% (5560/5852)Compressing objects:  96% (5618/5852)Compressing objects:  97% (5677/5852)Compressing objects:  98% (5735/5852)Compressing objects:  99% (5794/5852)Compressing objects: 100% (5852/5852)Compressing objects: 100% (5852/5852), done.
+Total 10334 (delta 5954), reused 7155 (delta 3951), pack-reused 0
+
+go.mod (gomod)
+==============
+Total: 14 (UNKNOWN: 0, LOW: 0, MEDIUM: 9, HIGH: 5, CRITICAL: 0)
+
+┌────────────────────────────────┬─────────────────────┬──────────┬────────┬───────────────────────┬─────────────────────────────────────┬──────────────────────────────────────────────────────────────┐
+│            Library             │    Vulnerability    │ Severity │ Status │   Installed Version   │            Fixed Version            │                            Title                             │
+├────────────────────────────────┼─────────────────────┼──────────┼────────┼───────────────────────┼─────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ github.com/docker/distribution │ CVE-2023-2253       │ HIGH     │ fixed  │ 2.8.1+incompatible    │ 2.8.2-beta.1                        │ distribution/distribution: DoS from malicious API request    │
+│                                │                     │          │        │                       │                                     │ https://avd.aquasec.com/nvd/cve-2023-2253                    │
+├────────────────────────────────┼─────────────────────┤          │        ├───────────────────────┼─────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ github.com/docker/docker       │ CVE-2023-28840      │          │        │ 20.10.20+incompatible │ 20.10.24, 23.0.3                    │ moby: Encrypted overlay network may be unauthenticated       │
+│                                │                     │          │        │                       │                                     │ https://avd.aquasec.com/nvd/cve-2023-28840                   │
+│                                ├─────────────────────┼──────────┤        │                       │                                     ├──────────────────────────────────────────────────────────────┤
+│                                │ CVE-2023-28841      │ MEDIUM   │        │                       │                                     │ moby: Encrypted overlay network traffic may be unencrypted   │
+│                                │                     │          │        │                       │                                     │ https://avd.aquasec.com/nvd/cve-2023-28841                   │
+│                                ├─────────────────────┤          │        │                       │                                     ├──────────────────────────────────────────────────────────────┤
+│                                │ CVE-2023-28842      │          │        │                       │                                     │ moby: Encrypted overlay network with a single endpoint is    │
+│                                │                     │          │        │                       │                                     │ unauthenticated                                              │
+│                                │                     │          │        │                       │                                     │ https://avd.aquasec.com/nvd/cve-2023-28842                   │
+│                                ├─────────────────────┤          │        │                       ├─────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                │ CVE-2024-24557      │          │        │                       │ 25.0.2, 24.0.9                      │ moby: classic builder cache poisoning                        │
+│                                │                     │          │        │                       │                                     │ https://avd.aquasec.com/nvd/cve-2024-24557                   │
+│                                ├─────────────────────┤          │        │                       ├─────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                │ CVE-2024-29018      │          │        │                       │ 26.0.0-rc3, 25.0.5, 23.0.11         │ moby: external DNS requests from 'internal' networks could   │
+│                                │                     │          │        │                       │                                     │ lead to data exfiltration...                                 │
+│                                │                     │          │        │                       │                                     │ https://avd.aquasec.com/nvd/cve-2024-29018                   │
+│                                ├─────────────────────┤          │        │                       ├─────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                │ GHSA-jq35-85cj-fj4p │          │        │                       │ 24.0.7, 23.0.8, 20.10.27            │ /sys/devices/virtual/powercap accessible by default to       │
+│                                │                     │          │        │                       │                                     │ containers                                                   │
+│                                │                     │          │        │                       │                                     │ https://github.com/advisories/GHSA-jq35-85cj-fj4p            │
+├────────────────────────────────┼─────────────────────┼──────────┤        ├───────────────────────┼─────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ golang.org/x/net               │ CVE-2022-41721      │ HIGH     │        │ 0.1.0                 │ 0.1.1-0.20221104162952-702349b0e862 │ x/net/http2/h2c: request smuggling                           │
+│                                │                     │          │        │                       │                                     │ https://avd.aquasec.com/nvd/cve-2022-41721                   │
+│                                ├─────────────────────┤          │        │                       ├─────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                │ CVE-2022-41723      │          │        │                       │ 0.7.0                               │ net/http, golang.org/x/net/http2: avoid quadratic complexity │
+│                                │                     │          │        │                       │                                     │ in HPACK decoding                                            │
+│                                │                     │          │        │                       │                                     │ https://avd.aquasec.com/nvd/cve-2022-41723                   │
+│                                ├─────────────────────┤          │        │                       ├─────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                │ CVE-2023-39325      │          │        │                       │ 0.17.0                              │ golang: net/http, x/net/http2: rapid stream resets can cause │
+│                                │                     │          │        │                       │                                     │ excessive work (CVE-2023-44487)                              │
+│                                │                     │          │        │                       │                                     │ https://avd.aquasec.com/nvd/cve-2023-39325                   │
+│                                ├─────────────────────┼──────────┤        │                       ├─────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                │ CVE-2023-3978       │ MEDIUM   │        │                       │ 0.13.0                              │ golang.org/x/net/html: Cross site scripting                  │
+│                                │                     │          │        │                       │                                     │ https://avd.aquasec.com/nvd/cve-2023-3978                    │
+│                                ├─────────────────────┤          │        │                       ├─────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                │ CVE-2023-44487      │          │        │                       │ 0.17.0                              │ HTTP/2: Multiple HTTP/2 enabled web servers are vulnerable   │
+│                                │                     │          │        │                       │                                     │ to a DDoS attack...                                          │
+│                                │                     │          │        │                       │                                     │ https://avd.aquasec.com/nvd/cve-2023-44487                   │
+│                                ├─────────────────────┤          │        │                       ├─────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                                │ CVE-2023-45288      │          │        │                       │ 0.23.0                              │ golang: net/http, x/net/http2: unlimited number of           │
+│                                │                     │          │        │                       │                                     │ CONTINUATION frames causes DoS                               │
+│                                │                     │          │        │                       │                                     │ https://avd.aquasec.com/nvd/cve-2023-45288                   │
+├────────────────────────────────┼─────────────────────┤          │        ├───────────────────────┼─────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ google.golang.org/protobuf     │ CVE-2024-24786      │          │        │ 1.28.1                │ 1.33.0                              │ golang-protobuf: encoding/protojson, internal/encoding/json: │
+│                                │                     │          │        │                       │                                     │ infinite loop in protojson.Unmarshal when unmarshaling       │
+│                                │                     │          │        │                       │                                     │ certain forms of...                                          │
+│                                │                     │          │        │                       │                                     │ https://avd.aquasec.com/nvd/cve-2024-24786                   │
+└────────────────────────────────┴─────────────────────┴──────────┴────────┴───────────────────────┴─────────────────────────────────────┴──────────────────────────────────────────────────────────────┘
+
+Cargo.lock (cargo)
+==================
+Total: 8 (UNKNOWN: 0, LOW: 2, MEDIUM: 4, HIGH: 2, CRITICAL: 0)
+
+┌────────────────┬─────────────────────┬──────────┬──────────┬───────────────────┬────────────────────────────────────┬────────────────────────────────────────────────────────────┐
+│    Library     │    Vulnerability    │ Severity │  Status  │ Installed Version │           Fixed Version            │                           Title                            │
+├────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼────────────────────────────────────┼────────────────────────────────────────────────────────────┤
+│ atty           │ GHSA-g98v-hv3f-hcfr │ LOW      │ affected │ 0.2.14            │                                    │ atty potential unaligned read                              │
+│                │                     │          │          │                   │                                    │ https://github.com/advisories/GHSA-g98v-hv3f-hcfr          │
+├────────────────┼─────────────────────┼──────────┼──────────┼───────────────────┼────────────────────────────────────┼────────────────────────────────────────────────────────────┤
+│ h2             │ CVE-2023-26964      │ MEDIUM   │ fixed    │ 0.3.15            │ 0.3.17                             │ An issue was discovered in hyper v0.13.7. h2-0.2.4 Stream  │
+│                │                     │          │          │                   │                                    │ stacking occ ......                                        │
+│                │                     │          │          │                   │                                    │ https://avd.aquasec.com/nvd/cve-2023-26964                 │
+│                ├─────────────────────┤          │          │                   ├────────────────────────────────────┼────────────────────────────────────────────────────────────┤
+│                │ GHSA-8r5v-vm4m-4g25 │          │          │                   │ 0.3.24, 0.4.2                      │ Resource exhaustion vulnerability in h2 may lead to Denial │
+│                │                     │          │          │                   │                                    │ of Service (DoS)...                                        │
+│                │                     │          │          │                   │                                    │ https://github.com/advisories/GHSA-8r5v-vm4m-4g25          │
+│                ├─────────────────────┤          │          │                   ├────────────────────────────────────┼────────────────────────────────────────────────────────────┤
+│                │ GHSA-q6cp-qfwq-4gcv │          │          │                   │ 0.3.26, 0.4.4                      │ h2 servers vulnerable to degradation of service with       │
+│                │                     │          │          │                   │                                    │ CONTINUATION Flood                                         │
+│                │                     │          │          │                   │                                    │ https://github.com/advisories/GHSA-q6cp-qfwq-4gcv          │
+├────────────────┼─────────────────────┼──────────┤          ├───────────────────┼────────────────────────────────────┼────────────────────────────────────────────────────────────┤
+│ mio            │ CVE-2024-27308      │ HIGH     │          │ 0.8.5             │ 0.8.11                             │ Mio's tokens for named pipes may be delivered after        │
+│                │                     │          │          │                   │                                    │ deregistration                                             │
+│                │                     │          │          │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-27308                 │
+├────────────────┼─────────────────────┼──────────┤          ├───────────────────┼────────────────────────────────────┼────────────────────────────────────────────────────────────┤
+│ remove_dir_all │ GHSA-mc8h-8q98-g5hr │ LOW      │          │ 0.5.3             │ 0.8.0                              │ Race Condition Enabling Link Following and Time-of-check   │
+│                │                     │          │          │                   │                                    │ Time-of-use (TOCTOU) Race Condition in...                  │
+│                │                     │          │          │                   │                                    │ https://github.com/advisories/GHSA-mc8h-8q98-g5hr          │
+├────────────────┼─────────────────────┼──────────┤          ├───────────────────┼────────────────────────────────────┼────────────────────────────────────────────────────────────┤
+│ rustix         │ GHSA-c827-hfw6-qwvm │ MEDIUM   │          │ 0.36.7            │ 0.35.15, 0.36.16, 0.37.25, 0.38.19 │ rustix's `rustix::fs::Dir` iterator with the `linux_raw`   │
+│                │                     │          │          │                   │                                    │ backend can cause memory explosion                         │
+│                │                     │          │          │                   │                                    │ https://github.com/advisories/GHSA-c827-hfw6-qwvm          │
+├────────────────┼─────────────────────┼──────────┤          ├───────────────────┼────────────────────────────────────┼────────────────────────────────────────────────────────────┤
+│ tungstenite    │ CVE-2023-43669      │ HIGH     │          │ 0.17.3            │ 0.20.1                             │ The Tungstenite crate before 0.20.1 for Rust allows remote │
+│                │                     │          │          │                   │                                    │ attackers t ......                                         │
+│                │                     │          │          │                   │                                    │ https://avd.aquasec.com/nvd/cve-2023-43669                 │
+└────────────────┴─────────────────────┴──────────┴──────────┴───────────────────┴────────────────────────────────────┴────────────────────────────────────────────────────────────┘
+
+image-registry-checker:latest (debian 12.5)
+===========================================
+Total: 21 (UNKNOWN: 0, LOW: 13, MEDIUM: 7, HIGH: 1, CRITICAL: 0)
+
+┌────────────┬──────────────────┬──────────┬──────────────┬───────────────────┬───────────────┬─────────────────────────────────────────────────────────────┐
+│  Library   │  Vulnerability   │ Severity │    Status    │ Installed Version │ Fixed Version │                            Title                            │
+├────────────┼──────────────────┼──────────┼──────────────┼───────────────────┼───────────────┼─────────────────────────────────────────────────────────────┤
+│ libc6      │ CVE-2024-2961    │ HIGH     │ affected     │ 2.36-9+deb12u4    │               │ glibc: Out of bounds write in iconv may lead to remote      │
+│            │                  │          │              │                   │               │ code...                                                     │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2024-2961                   │
+│            ├──────────────────┼──────────┤              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2010-4756    │ LOW      │              │                   │               │ glibc: glob implementation can cause excessive CPU and      │
+│            │                  │          │              │                   │               │ memory consumption due to...                                │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2010-4756                   │
+│            ├──────────────────┤          │              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2018-20796   │          │              │                   │               │ glibc: uncontrolled recursion in function                   │
+│            │                  │          │              │                   │               │ check_dst_limits_calc_pos_1 in posix/regexec.c              │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2018-20796                  │
+│            ├──────────────────┤          │              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2019-1010022 │          │              │                   │               │ glibc: stack guard protection bypass                        │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2019-1010022                │
+│            ├──────────────────┤          │              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2019-1010023 │          │              │                   │               │ glibc: running ldd on malicious ELF leads to code execution │
+│            │                  │          │              │                   │               │ because of...                                               │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2019-1010023                │
+│            ├──────────────────┤          │              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2019-1010024 │          │              │                   │               │ glibc: ASLR bypass using cache of thread stack and heap     │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2019-1010024                │
+│            ├──────────────────┤          │              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2019-1010025 │          │              │                   │               │ glibc: information disclosure of heap addresses of          │
+│            │                  │          │              │                   │               │ pthread_created thread                                      │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2019-1010025                │
+│            ├──────────────────┤          │              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2019-9192    │          │              │                   │               │ glibc: uncontrolled recursion in function                   │
+│            │                  │          │              │                   │               │ check_dst_limits_calc_pos_1 in posix/regexec.c              │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2019-9192                   │
+├────────────┼──────────────────┼──────────┤              ├───────────────────┼───────────────┼─────────────────────────────────────────────────────────────┤
+│ libgcc-s1  │ CVE-2023-4039    │ MEDIUM   │              │ 12.2.0-14         │               │ gcc: -fstack-protector fails to guard dynamic stack         │
+│            │                  │          │              │                   │               │ allocations on ARM64                                        │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2023-4039                   │
+│            ├──────────────────┼──────────┤              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2022-27943   │ LOW      │              │                   │               │ binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows  │
+│            │                  │          │              │                   │               │ stack exhaustion in demangle_const                          │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2022-27943                  │
+├────────────┼──────────────────┼──────────┤              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│ libgomp1   │ CVE-2023-4039    │ MEDIUM   │              │                   │               │ gcc: -fstack-protector fails to guard dynamic stack         │
+│            │                  │          │              │                   │               │ allocations on ARM64                                        │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2023-4039                   │
+│            ├──────────────────┼──────────┤              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2022-27943   │ LOW      │              │                   │               │ binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows  │
+│            │                  │          │              │                   │               │ stack exhaustion in demangle_const                          │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2022-27943                  │
+├────────────┼──────────────────┼──────────┤              ├───────────────────┼───────────────┼─────────────────────────────────────────────────────────────┤
+│ libssl3    │ CVE-2023-5678    │ MEDIUM   │              │ 3.0.11-1~deb12u2  │               │ openssl: Generating excessively long X9.42 DH keys or       │
+│            │                  │          │              │                   │               │ checking excessively long X9.42...                          │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2023-5678                   │
+│            ├──────────────────┤          │              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2023-6129    │          │              │                   │               │ openssl: POLY1305 MAC implementation corrupts vector        │
+│            │                  │          │              │                   │               │ registers on PowerPC                                        │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2023-6129                   │
+│            ├──────────────────┤          │              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2023-6237    │          │              │                   │               │ openssl: Excessive time spent checking invalid RSA public   │
+│            │                  │          │              │                   │               │ keys                                                        │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2023-6237                   │
+│            ├──────────────────┤          │              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2024-0727    │          │              │                   │               │ openssl: denial of service via null dereference             │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2024-0727                   │
+│            ├──────────────────┼──────────┤              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2007-6755    │ LOW      │              │                   │               │ Dual_EC_DRBG: weak pseudo random number generator           │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2007-6755                   │
+│            ├──────────────────┤          │              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2010-0928    │          │              │                   │               │ openssl: RSA authentication weakness                        │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2010-0928                   │
+│            ├──────────────────┤          ├──────────────┤                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2024-2511    │          │ fix_deferred │                   │               │ openssl: Unbounded memory growth with session handling in   │
+│            │                  │          │              │                   │               │ TLSv1.3                                                     │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2024-2511                   │
+├────────────┼──────────────────┼──────────┼──────────────┼───────────────────┼───────────────┼─────────────────────────────────────────────────────────────┤
+│ libstdc++6 │ CVE-2023-4039    │ MEDIUM   │ affected     │ 12.2.0-14         │               │ gcc: -fstack-protector fails to guard dynamic stack         │
+│            │                  │          │              │                   │               │ allocations on ARM64                                        │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2023-4039                   │
+│            ├──────────────────┼──────────┤              │                   ├───────────────┼─────────────────────────────────────────────────────────────┤
+│            │ CVE-2022-27943   │ LOW      │              │                   │               │ binutils: libiberty/rust-demangle.c in GNU GCC 11.2 allows  │
+│            │                  │          │              │                   │               │ stack exhaustion in demangle_const                          │
+│            │                  │          │              │                   │               │ https://avd.aquasec.com/nvd/cve-2022-27943                  │
+└────────────┴──────────────────┴──────────┴──────────────┴───────────────────┴───────────────┴─────────────────────────────────────────────────────────────┘
+
+crane (gobinary)
+================
+Total: 7 (UNKNOWN: 0, LOW: 0, MEDIUM: 5, HIGH: 2, CRITICAL: 0)
+
+┌────────────────────────────────┬─────────────────────┬──────────┬────────┬────────────────────────┬─────────────────────────────┬────────────────────────────────────────────────────────────┐
+│            Library             │    Vulnerability    │ Severity │ Status │   Installed Version    │        Fixed Version        │                           Title                            │
+├────────────────────────────────┼─────────────────────┼──────────┼────────┼────────────────────────┼─────────────────────────────┼────────────────────────────────────────────────────────────┤
+│ github.com/docker/distribution │ CVE-2023-2253       │ HIGH     │ fixed  │ v2.8.1+incompatible    │ 2.8.2-beta.1                │ distribution/distribution: DoS from malicious API request  │
+│                                │                     │          │        │                        │                             │ https://avd.aquasec.com/nvd/cve-2023-2253                  │
+├────────────────────────────────┼─────────────────────┤          │        ├────────────────────────┼─────────────────────────────┼────────────────────────────────────────────────────────────┤
+│ github.com/docker/docker       │ CVE-2023-28840      │          │        │ v20.10.20+incompatible │ 20.10.24, 23.0.3            │ moby: Encrypted overlay network may be unauthenticated     │
+│                                │                     │          │        │                        │                             │ https://avd.aquasec.com/nvd/cve-2023-28840                 │
+│                                ├─────────────────────┼──────────┤        │                        │                             ├────────────────────────────────────────────────────────────┤
+│                                │ CVE-2023-28841      │ MEDIUM   │        │                        │                             │ moby: Encrypted overlay network traffic may be unencrypted │
+│                                │                     │          │        │                        │                             │ https://avd.aquasec.com/nvd/cve-2023-28841                 │
+│                                ├─────────────────────┤          │        │                        │                             ├────────────────────────────────────────────────────────────┤
+│                                │ CVE-2023-28842      │          │        │                        │                             │ moby: Encrypted overlay network with a single endpoint is  │
+│                                │                     │          │        │                        │                             │ unauthenticated                                            │
+│                                │                     │          │        │                        │                             │ https://avd.aquasec.com/nvd/cve-2023-28842                 │
+│                                ├─────────────────────┤          │        │                        ├─────────────────────────────┼────────────────────────────────────────────────────────────┤
+│                                │ CVE-2024-24557      │          │        │                        │ 25.0.2, 24.0.9              │ moby: classic builder cache poisoning                      │
+│                                │                     │          │        │                        │                             │ https://avd.aquasec.com/nvd/cve-2024-24557                 │
+│                                ├─────────────────────┤          │        │                        ├─────────────────────────────┼────────────────────────────────────────────────────────────┤
+│                                │ CVE-2024-29018      │          │        │                        │ 26.0.0-rc3, 25.0.5, 23.0.11 │ moby: external DNS requests from 'internal' networks could │
+│                                │                     │          │        │                        │                             │ lead to data exfiltration...                               │
+│                                │                     │          │        │                        │                             │ https://avd.aquasec.com/nvd/cve-2024-29018                 │
+│                                ├─────────────────────┤          │        │                        ├─────────────────────────────┼────────────────────────────────────────────────────────────┤
+│                                │ GHSA-jq35-85cj-fj4p │          │        │                        │ 24.0.7, 23.0.8, 20.10.27    │ /sys/devices/virtual/powercap accessible by default to     │
+│                                │                     │          │        │                        │                             │ containers                                                 │
+│                                │                     │          │        │                        │                             │ https://github.com/advisories/GHSA-jq35-85cj-fj4p          │
+└────────────────────────────────┴─────────────────────┴──────────┴────────┴────────────────────────┴─────────────────────────────┴────────────────────────────────────────────────────────────┘
