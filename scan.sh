@@ -1,6 +1,7 @@
 #!/bin/sh
 
 CRANE_VERSION=v0.13.0
+SEVERITY=MEDIUM,HIGH,CRITICAL
 
 # $ sh scan.sh image-registry-checker:latest
 
@@ -9,7 +10,7 @@ if [ ! -d trivy ]; then
  mkdir -p trivy && tar xf trivy_0.50.1_Linux-64bit.tar.gz -C trivy
 fi
 
-./trivy/trivy image --severity MEDIUM,HIGH,CRITICAL "$1"
-./trivy/trivy repo --severity MEDIUM,HIGH,CRITICAL image-registry-checker/
-./trivy/trivy repo --tag=${CRANE_VERSION} --severity MEDIUM,HIGH,CRITICAL github.com/google/go-containerregistry
+./trivy/trivy image --severity "$SEVERITY" "$1"
+./trivy/trivy repo --severity "$SEVERITY" image-registry-checker/
+./trivy/trivy repo --tag=${CRANE_VERSION} --severity "$SEVERITY" github.com/google/go-containerregistry
 
