@@ -1,5 +1,5 @@
 ARG GO_VERSION=1.20
-ARG RUST_VERSION=1
+ARG RUST_VERSION=1.77.2
 
 # Crane Builder
 FROM golang:${GO_VERSION} as crane-builder
