@@ -10,7 +10,8 @@ if [ ! -d trivy ]; then
  mkdir -p trivy && tar xf trivy_0.50.1_Linux-64bit.tar.gz -C trivy
 fi
 
-./trivy/trivy image --severity "$SEVERITY" "$1"
-./trivy/trivy repo --severity "$SEVERITY" image-registry-checker/
 ./trivy/trivy repo --tag=${CRANE_VERSION} --severity "$SEVERITY" github.com/google/go-containerregistry
+./trivy/trivy repo --severity "$SEVERITY" image-registry-checker/
+
+./trivy/trivy image --severity "$SEVERITY" "$1"
 
