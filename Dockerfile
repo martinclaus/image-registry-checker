@@ -13,9 +13,9 @@ ADD image-registry-checker ./
 RUN cargo build --release
 
 # Actual container image
-FROM gcr.io/distroless/cc
+FROM gcr.io/distroless/cc-debian12
 COPY --from=crane-builder /go/bin/crane /
 COPY --from=rust-builder /app/target/release/image-registry-checker /
-EXPOSE 80
+EXPOSE 8080
 ENTRYPOINT ["./image-registry-checker"]
 CMD ["--port=8080", "--ip=0.0.0.0", "--crane-cmd=/crane"]
