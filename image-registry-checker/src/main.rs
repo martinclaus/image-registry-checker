@@ -196,7 +196,6 @@ mod logging {
 
 /// Image checker use case
 mod image_exist {
-    use std::process::Stdio;
     use tokio::process::Command;
 
     /// Spawn crane to look up image
@@ -207,13 +206,20 @@ mod image_exist {
         match Command::new(cmd.as_ref())
             .arg("manifest")
             .arg(image.as_ref())
-            .stdout(Stdio::null())
-            .stderr(Stdio::null())
-            .spawn()
+            .output()
+            .await
         {
-            Ok(mut child) => {
-                let status = child.wait().await?;
-                Ok(status.success())
+            Ok(output) => {
+                if !output.status.success() {
+                    log::error!(
+                        "\"{}\" failed with status code {}: {}",
+                        cmd.as_ref(),
+                        output.status.code().unwrap(),
+                        String::from_utf8(output.stderr)
+                            .expect(format!("got non utf-8 from {}", cmd.as_ref()).as_ref())
+                    );
+                }
+                Ok(output.status.success())
             }
             Err(e) => {
                 log::error!("Failed to spawn subprocess: {}", e);
